@@ -38,7 +38,7 @@ namespace BackboneCrudCSharp.Controllers {
             catch {
                 throw new HttpResponseException(new HttpResponseMessage {
                     StatusCode = HttpStatusCode.ExpectationFailed,
-                    Content = new StringContent("Erro ao atualizar a transação!")
+                    Content = new StringContent("Erro ao atualizar a conta!")
                 });
             }
         }
@@ -70,7 +70,7 @@ namespace BackboneCrudCSharp.Controllers {
             catch {
                 throw new HttpResponseException(new HttpResponseMessage {
                     StatusCode = HttpStatusCode.ExpectationFailed,
-                    Content = new StringContent("Erro ao deletar a transação!")
+                    Content = new StringContent("Erro ao deletar a conta!")
                 });
             }
         }

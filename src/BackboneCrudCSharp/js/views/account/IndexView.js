@@ -28,7 +28,7 @@
 
                 $container.empty();
                 this.collection.forEach(function (item) {
-                    var view = new ItemView({ router: me.router, collection: me.collection, model: item });
+                    var view = new ItemView({ collection: me.collection, model: item });
 
                     var content = view.render();
                     $container.append(content.el);
