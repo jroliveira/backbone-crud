@@ -56,7 +56,7 @@
                     $(':input').not(':button, :submit, :reset, :hidden').val('').removeAttr('checked').removeAttr('selected');
                 },
                 error: function (model, response) {
-                    var view = new AlertView({ type: 'success', message: 'Erro ao atualizar a conta!' });
+                    var view = new AlertView({ type: 'error', message: 'Erro ao atualizar a conta!' });
                     view.render();
                 }
             });
