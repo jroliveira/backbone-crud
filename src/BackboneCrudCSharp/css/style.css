@@ -1,0 +1,133 @@
+﻿body, html {
+    height: 100%;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+#wrap {
+    min-height: 100%;
+    position: relative;
+}
+
+article {
+    padding-top: 60px;
+    padding-bottom: 80px;
+}
+
+footer {
+    color: #666;
+    background: #222;
+    padding: 17px 0 18px 0;
+    border-top: 1px solid #000;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+footer a {
+    color: #999;
+}
+
+footer a:hover {
+    color: #efefef;
+}
+
+.img-16x16, .img-26x26, .img-32x32 {
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.img-16x16 {
+    height: 16px;
+    line-height: 16px;    
+    width: 16px;
+}
+
+.img-26x26 {
+    height: 26px;
+    line-height: 26px;    
+    width: 26px;
+}
+
+.img-32x32 {
+    height: 32px;
+    line-height: 32px;    
+    width: 32px;
+}
+
+.money-white-16x16 {
+    background-image: url("../img/16x16/money-white.png");
+}
+
+.money-black-16x16 {
+    background-image: url("../img/16x16/money-black.png");
+}
+
+.money-black-26x26 {
+    background-image: url("../img/26x26/money-black.png");
+}
+
+.money-white-32x32 {
+    background-image: url("../img/32x32/money-white.png");
+}
+
+.money-black-32x32 {
+    background-image: url("../img/32x32/money-black.png");
+}
+
+.date-range-picker {
+    color: #333333;
+    cursor: pointer;
+    line-height: 18px;
+    padding: 8px;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px 5px 5px 5px;
+}
+.date-range-picker .caret {
+    margin-left: 2px;
+    margin-top: 8px;
+}
+.date-range-picker span {
+    padding-left: 3px;
+}
+        
+/*.table td, .table th {
+    border: none;
+}
+table.table.table-condensed {
+    border: 1px solid black;
+}*/
+        
+.show-grid [class*="span"] {
+    line-height: 40px;
+    min-height: 40px;
+    padding: 0 10px 0 10px;
+}
+.show-grid.row-fluid:hover {
+    background-color: #F5F5F5;
+    border-radius: 3px 3px 3px 3px;
+    cursor: pointer;
+}
+        
+.show-grid.row-fluid.title, 
+.show-grid.row-fluid.title > a,
+.show-grid.row-fluid.title > a:hover,
+.show-grid.row-fluid.title > a:focus {
+    color: #FFFFFF;
+    border-radius: 4px 4px 4px 4px;
+    background-color: #696969 !important;
+}
+    
+.panel-heading > .bootstrap-select {
+    margin-top: -5px;
+}
+        
+code {
+    padding: 2px 4px 4px 2px;
+}
+        
+.clean {
+    clear: both;
+}
