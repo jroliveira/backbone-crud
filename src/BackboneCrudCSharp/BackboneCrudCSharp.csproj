@@ -145,8 +145,7 @@
     <Content Include="js\main.js" />
     <Content Include="js\models\Account.js" />
     <Content Include="js\router.js" />
-    <Content Include="js\templates\account\create.html" />
-    <Content Include="js\templates\account\edit.html" />
+    <Content Include="js\templates\account\save.html" />
     <Content Include="js\templates\account\index.html" />
     <Content Include="js\templates\account\item.html" />
     <Content Include="js\templates\alert.html" />
@@ -154,8 +153,7 @@
     <Content Include="js\templates\empty.html" />
     <Content Include="js\templates\home\index.html" />
     <Content Include="js\templates\loading.html" />
-    <Content Include="js\views\account\CreateView.js" />
-    <Content Include="js\views\account\EditView.js" />
+    <Content Include="js\views\account\SaveView.js" />
     <Content Include="js\views\account\IndexView.js" />
     <Content Include="js\views\account\ItemView.js" />
     <Content Include="js\views\AlertView.js" />

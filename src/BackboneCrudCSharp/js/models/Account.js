@@ -9,18 +9,6 @@
         urlRoot: '/api/accounts',
         
         idAttribute: 'id',
-        
-        initialize: function () {
-            var me = this;
-            
-            this.on("invalid", function (model, error) {
-                me.showErrors(error);
-            });
-            
-            this.on("change", function () {
-                me.hideErrors();
-            });
-        },
 
         defaults: {
             name: '',
@@ -58,20 +46,7 @@
             }
             
             return errors.length > 0 ? errors : false;
-        },
-        
-        showErrors: function (errors) {
-            _.each(errors, function (error) {
-                var $controlGroup = $('#' + error.name).closest('.control-group');
-                $controlGroup.addClass('error');
-                $controlGroup.find('.help-inline').text(error.message);
-            }, this);
-        },
-
-        hideErrors: function () {
-            $('.control-group').removeClass('error');
-            $('.help-inline').text('');
-        },
+        }
 
     });
 

@@ -3,13 +3,25 @@
     'underscore',
     'backbone',
     'views/AlertView',
-    'text!templates/account/create.html',
+    'text!templates/account/save.html',
     'bootstrap'
 ], function ($, _, Backbone, AlertView, template) {
 
-    var CreateView = Backbone.View.extend({
+    var SaveView = Backbone.View.extend({
 
         el: $('article > .container'),
+        
+        initialize: function () {
+            var me = this;
+
+            this.model.on("invalid", function (model, error) {
+                me.showErrors(error);
+            });
+
+            this.model.on("change", function () {
+                me.hideErrors();
+            });
+        },
         
         events: {
             'click #back': 'goBack',
@@ -26,9 +38,9 @@
             return this;
         },
         
-        goBack: function () {
+        goBack: function (e) {
+            e.preventDefault();
             Backbone.history.navigate('contas', { trigger: true });
-            return false;
         },
         
         enter: function (e) {
@@ -41,6 +53,7 @@
             e.preventDefault();
 
             var account = {
+                id: this.model.get('id'),
                 name: $('#name').val(),
                 email: $('#email').val(),
                 password: $('#password').val(),
@@ -62,6 +75,19 @@
 
             return false;
         },
+        
+        showErrors: function (errors) {
+            _.each(errors, function (error) {
+                var $controlGroup = $('#' + error.name).closest('.control-group');
+                $controlGroup.addClass('error');
+                $controlGroup.find('.help-inline').text(error.message);
+            }, this);
+        },
+
+        hideErrors: function () {
+            $('.control-group').removeClass('error');
+            $('.help-inline').text('');
+        },
 
         close: function () {
             $(this.el).unbind();
@@ -69,5 +95,5 @@
         }
     });
 
-    return CreateView;
+    return SaveView;
 });

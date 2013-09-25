@@ -2,11 +2,10 @@ define([
     'backbone',
     'views/home/IndexView',
     'views/account/IndexView',
-    'views/account/CreateView',
-    'views/account/EditView',
+    'views/account/SaveView',
     'models/Account',
     'collections/Accounts'
-], function (Backbone, HomeIndexView, AccountIndexView, AccountCreateView, AccountEditView, Account, Accounts) {
+], function (Backbone, HomeIndexView, AccountIndexView, AccountSaveView, Account, Accounts) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
@@ -30,7 +29,7 @@ define([
             var model = new Account({ id: id });
             model.fetch({
                 success: function (account) {
-                    var view = new AccountEditView({ model: account });
+                    var view = new AccountSaveView({ model: account });
                     view.render();
                 }
             });
@@ -38,7 +37,7 @@ define([
         
         appRouter.on('route:createAccount', function () {
             var model = new Account;
-            var view = new AccountCreateView({ model: model });
+            var view = new AccountSaveView({ model: model });
             view.render();
         });
         

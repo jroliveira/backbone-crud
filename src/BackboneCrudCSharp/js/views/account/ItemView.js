@@ -35,9 +35,9 @@
             view.render();
         },
         
-        goEdit: function() {
+        goEdit: function (e) {
+            e.preventDefault();
             Backbone.history.navigate('conta/editar/' + this.model.get('id'), { trigger: true });
-            return false;
         }
         
     });
