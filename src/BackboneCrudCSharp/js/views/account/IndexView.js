@@ -12,14 +12,25 @@
         
         el: $('article > .container'),
 
+        initialize: function () {
+            this.collection.on("change reset add remove", this.renderItems, this);
+        },
+
         events: {
-            'click #create': 'goCreate'
+            'click #create': 'goCreate',
+            'click #undo': 'undoAction'
         },
 
         render: function() {
             $(this.el).html(template);
-            
+            this.renderItems();
+
+            return this;
+        },
+        
+        renderItems: function() {
             var $container = $(this.el).find('table > tbody');
+            $container.empty();
 
             if (this.collection.models.length < 1) {
                 $container.html(templateEmpty);
@@ -34,13 +45,19 @@
                     $container.append(content.el);
                 });
             }
-
-            return this;
         },
 
         goCreate: function(e) {
             e.preventDefault();
             Backbone.history.navigate('conta/criar', { trigger: true });
+        },
+        
+        undoAction: function (e) {
+            e.preventDefault();
+            
+            var action = this.collection.lastAction;
+            action.undo();
+            $('#undo').hide();
         }
 
     });

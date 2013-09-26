@@ -11,11 +11,16 @@ namespace BackboneCrudCSharp.Controllers {
     public class AccountsController : ApiController {
 
         private static readonly ICollection<AccountModel> Accounts = new Collection<AccountModel> {
-            new AccountModel{ id = 1, email = "a@b.c", name = "teste A"},
-            new AccountModel{ id = 2, email = "b@c.d", name = "teste B"},
-            new AccountModel{ id = 3, email = "c@d.e", name = "teste C"},
-            new AccountModel{ id = 4, email = "d@e.f", name = "teste D"},
-            new AccountModel{ id = 5, email = "e@f.g", name = "teste E"}
+            new AccountModel{ id = 1, email = "junior@gmail.com", name = "teste A", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 2, email = "junior@gmail.com", name = "teste B", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 3, email = "junior@gmail.com", name = "teste C", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 4, email = "junior@gmail.com", name = "teste D", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 5, email = "junior@gmail.com", name = "teste E", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 6, email = "junior@gmail.com", name = "teste F", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 7, email = "junior@gmail.com", name = "teste G", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 8, email = "junior@gmail.com", name = "teste H", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 9, email = "junior@gmail.com", name = "teste I", password = "teste", confirmPassword = "teste"},
+            new AccountModel{ id = 10, email = "junior@gmail.com", name = "teste J", password = "teste", confirmPassword = "teste"}
         };
 
         public IEnumerable<AccountModel> Get() {

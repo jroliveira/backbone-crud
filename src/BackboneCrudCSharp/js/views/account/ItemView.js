@@ -12,6 +12,7 @@
         
         initialize: function() {
             this.model.on('destroy', this.remove, this);
+            this.model.bind('undoableAction', this.showUndo, this);
         },
 
         events: {
@@ -38,6 +39,11 @@
         goEdit: function (e) {
             e.preventDefault();
             Backbone.history.navigate('conta/editar/' + this.model.get('id'), { trigger: true });
+        },
+        
+        showUndo: function () {
+            var $undo = $('#undo');
+            $undo.show();
         }
         
     });
