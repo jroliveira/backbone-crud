@@ -57,7 +57,7 @@
             
             var action = this.collection.lastAction;
             action.undo();
-            $('#undo').hide();
+            $('.undo-changes').remove();
         }
 
     });

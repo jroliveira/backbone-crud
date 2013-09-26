@@ -12,15 +12,8 @@
         el: $('article > .container'),
         
         initialize: function () {
-            var me = this;
-
-            this.model.on("invalid", function (model, error) {
-                me.showErrors(error);
-            });
-
-            this.model.on("change", function () {
-                me.hideErrors();
-            });
+            this.model.on("invalid", this.showErrors, this);
+            this.model.on("change", this.hideErrors, this);
         },
         
         events: {
@@ -76,7 +69,7 @@
             return false;
         },
         
-        showErrors: function (errors) {
+        showErrors: function (model, errors) {
             _.each(errors, function (error) {
                 var $controlGroup = $('#' + error.name).closest('.control-group');
                 $controlGroup.addClass('error');

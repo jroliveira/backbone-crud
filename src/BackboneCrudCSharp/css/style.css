@@ -131,3 +131,35 @@ code {
 .clean {
     clear: both;
 }
+
+/* confirm.html */
+
+.confirm-background {
+    background-color: #444;
+    height: 42px;
+    left: 0;
+    position: absolute;
+    z-index: 1040;
+    margin-left: 0;
+}
+    
+.confirm {
+    z-index: 1050; 
+    margin: 8px;
+    width: 400px;
+    float: right;
+    text-align: right;
+}
+    
+.confirm > span {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* undochanges.html */
+
+.undo-changes {
+    margin: auto;
+    width: 300px;
+    color: #000;
+}

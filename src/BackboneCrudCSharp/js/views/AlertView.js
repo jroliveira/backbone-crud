@@ -13,7 +13,7 @@
             this.type = this.options.type;
             this.message = this.options.message;
 
-            this.$el.find('.alert').remove();
+            this.$el.find('div.alert:not(.undo-changes)').remove();
         },
 
         render: function () {

@@ -10,33 +10,41 @@ namespace BackboneCrudCSharp.Controllers {
 
     public class AccountsController : ApiController {
 
-        private static readonly ICollection<AccountModel> Accounts = new Collection<AccountModel> {
-            new AccountModel{ id = 1, email = "junior@gmail.com", name = "teste A", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 2, email = "junior@gmail.com", name = "teste B", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 3, email = "junior@gmail.com", name = "teste C", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 4, email = "junior@gmail.com", name = "teste D", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 5, email = "junior@gmail.com", name = "teste E", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 6, email = "junior@gmail.com", name = "teste F", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 7, email = "junior@gmail.com", name = "teste G", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 8, email = "junior@gmail.com", name = "teste H", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 9, email = "junior@gmail.com", name = "teste I", password = "teste", confirmPassword = "teste"},
-            new AccountModel{ id = 10, email = "junior@gmail.com", name = "teste J", password = "teste", confirmPassword = "teste"}
+        private static readonly ICollection<Account> Accounts = new Collection<Account> {
+            new Account{ Id = 1, Name = "teste A", Email = "junior@gmail.com", Password = "teste", Deleted = false },
+            new Account{ Id = 2, Name = "teste B", Email = "junior@gmail.com", Password = "teste", Deleted = false },
+            new Account{ Id = 3, Name = "teste C", Email = "junior@gmail.com", Password = "teste", Deleted = false },
+            new Account{ Id = 4, Name = "teste D", Email = "junior@gmail.com", Password = "teste", Deleted = false },
+            new Account{ Id = 5, Name = "teste E", Email = "junior@gmail.com", Password = "teste", Deleted = false },
+            new Account{ Id = 6, Name = "teste F", Email = "junior@gmail.com", Password = "teste", Deleted = false },
+            new Account{ Id = 7, Name = "teste G", Email = "junior@gmail.com", Password = "teste", Deleted = false },
+            new Account{ Id = 8, Name = "teste H", Email = "junior@gmail.com", Password = "teste", Deleted = false },
+            new Account{ Id = 9, Name = "teste I", Email = "junior@gmail.com", Password = "teste", Deleted = false }
         };
 
-        public IEnumerable<AccountModel> Get() {
-            return Accounts;
+        public IEnumerable<dynamic> Get() {
+            return Accounts.Where(account => account.Deleted == false)
+                           .Select(account => new { id = account.Id, name = account.Name, email = account.Email });
         }
 
-        public AccountModel Get(int id) {
-            return Accounts.FirstOrDefault(c => c.id == id);
+        public dynamic Get(int id) {
+            return Accounts.Where(account => account.Id == id)
+                           .Select(account => new { id = account.Id, name = account.Name, email = account.Email })
+                           .FirstOrDefault();
         }
 
-        public AccountModel Put(AccountModel model) {
+        public dynamic Put(AccountModel model) {
             try {
-                var account = Accounts.FirstOrDefault(c => c.id == model.id);
+                var account = Accounts.FirstOrDefault(c => c.Id == model.id);
                 Accounts.Remove(account);
 
-                Accounts.Add(model);
+                Accounts.Add(new Account {
+                    Id = model.id,
+                    Name = model.name,
+                    Email = model.email,
+                    Password = model.password,
+                    Deleted = false
+                });
 
                 return model;
             }
@@ -50,10 +58,16 @@ namespace BackboneCrudCSharp.Controllers {
 
         public HttpResponseMessage Post(AccountModel model) {
             try {
-                var id = Accounts.Max(c => c.id) + 1;
+                var id = Accounts.Max(c => c.Id) + 1;
                 model.id = id;
 
-                Accounts.Add(model);
+                Accounts.Add(new Account {
+                    Id = model.id,
+                    Name = model.name,
+                    Email = model.email,
+                    Password = model.password,
+                    Deleted = false
+                });
 
                 return Request.CreateResponse(HttpStatusCode.Created, model);
             }
@@ -67,8 +81,11 @@ namespace BackboneCrudCSharp.Controllers {
 
         public HttpResponseMessage Delete(int id) {
             try {
-                var account = Accounts.FirstOrDefault(c => c.id == id);
+                var account = Accounts.FirstOrDefault(c => c.Id == id);
                 Accounts.Remove(account);
+
+                account.Deleted = true;
+                Accounts.Add(account);
 
                 return new HttpResponseMessage { StatusCode = HttpStatusCode.NoContent };
             }
@@ -79,5 +96,14 @@ namespace BackboneCrudCSharp.Controllers {
                 });
             }
         }
+    }
+
+    public class Account {
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public bool Deleted { get; set; }
     }
 }

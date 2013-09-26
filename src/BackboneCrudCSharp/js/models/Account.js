@@ -1,38 +1,16 @@
 ﻿define([
         'jquery',
         'underscore',
-        'backbone'
-], function ($, _, Backbone) {
+        'backbone',
+        'models/UndoChangesModel'
+], function ($, _, Backbone, UndoChangesModel) {
 
-    var Account = Backbone.Model.extend({
+    var Account = UndoChangesModel.extend({
 
         urlRoot: '/api/accounts',
         
         idAttribute: 'id',
         
-        initialize: function () {
-            this.bind('change', this.storeAction, this);
-            this.bind('destroy', this.storeAction, this);
-        },
-        
-        storeAction: function(event) {
-            if (this.id) {
-                var action = {};
-                action.model = this;
-                action.type = 'destroy';
-                
-                if (event._changing) {
-                    action.type = 'change';
-                    action.undo = function () {
-                        var attributes = this.model.previousAttributes();
-                        this.model.save(attributes);
-                    };
-                }
-                
-                this.trigger('undoableAction', action);            
-            }
-        },
-
         defaults: {
             name: '',
             email: '',
@@ -56,17 +34,17 @@
                 errors.push({ name: 'email', message: 'Campo obrigatório.' });
             }
             
-            if (!attrs.password) {
-                errors.push({ name: 'password', message: 'Campo obrigatório.' });
-            }
+            //if (!attrs.password) {
+            //    errors.push({ name: 'password', message: 'Campo obrigatório.' });
+            //}
             
-            if (attrs.password !== attrs.confirmPassword) {
-                errors.push({ name: 'confirmPassword', message: 'Senha năo confere.' });
-            }
+            //if (attrs.password !== attrs.confirmPassword) {
+            //    errors.push({ name: 'confirmPassword', message: 'Senha năo confere.' });
+            //}
 
-            if (!attrs.confirmPassword) {
-                errors.push({ name: 'confirmPassword', message: 'Campo obrigatório.' });
-            }
+            //if (!attrs.confirmPassword) {
+            //    errors.push({ name: 'confirmPassword', message: 'Campo obrigatório.' });
+            //}
             
             return errors.length > 0 ? errors : false;
         }

@@ -134,6 +134,7 @@
     <Content Include="Global.asax" />
     <Content Include="js\app.js" />
     <Content Include="js\collections\Accounts.js" />
+    <Content Include="js\collections\UndoChangesCollection.js" />
     <Content Include="js\libs\backbone\backbone.js" />
     <Content Include="js\libs\bootstrap\bootstrap.js" />
     <Content Include="js\libs\bootstrap\bootstrap.min.js" />
@@ -144,12 +145,14 @@
     <Content Include="js\libs\underscore\underscore.js" />
     <Content Include="js\main.js" />
     <Content Include="js\models\Account.js" />
+    <Content Include="js\models\UndoChangesModel.js" />
     <Content Include="js\router.js" />
     <Content Include="js\templates\account\save.html" />
     <Content Include="js\templates\account\index.html" />
     <Content Include="js\templates\account\item.html" />
     <Content Include="js\templates\alert.html" />
     <Content Include="js\templates\confirm.html" />
+    <Content Include="js\templates\undochanges.html" />
     <Content Include="js\templates\empty.html" />
     <Content Include="js\templates\home\index.html" />
     <Content Include="js\templates\loading.html" />

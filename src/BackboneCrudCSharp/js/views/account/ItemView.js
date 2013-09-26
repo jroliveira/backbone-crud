@@ -3,8 +3,9 @@
     'underscore',
     'backbone',
     'views/ConfirmView',
-    'text!templates/account/item.html'
-], function ($, _, Backbone, ConfirmView, template) {
+    'text!templates/account/item.html',
+    'text!templates/undochanges.html'
+], function ($, _, Backbone, ConfirmView, template, templateUndoChanges) {
 
     var ItemView = Backbone.View.extend({
 
@@ -42,8 +43,8 @@
         },
         
         showUndo: function () {
-            var $undo = $('#undo');
-            $undo.show();
+            var $container = $('article > .container');
+            $container.prepend(templateUndoChanges);
         }
         
     });
