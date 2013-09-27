@@ -9,8 +9,6 @@
 
     var SaveView = Backbone.View.extend({
 
-        el: $('article > .container'),
-        
         initialize: function () {
             this.model.on("invalid", this.showErrors, this);
             this.model.on("change", this.hideErrors, this);
@@ -33,6 +31,7 @@
         
         goBack: function (e) {
             e.preventDefault();
+            this.close();
             Backbone.history.navigate('contas', { trigger: true });
         },
         
@@ -80,12 +79,8 @@
         hideErrors: function () {
             $('.control-group').removeClass('error');
             $('.help-inline').text('');
-        },
-
-        close: function () {
-            $(this.el).unbind();
-            $(this.el).empty();
         }
+        
     });
 
     return SaveView;

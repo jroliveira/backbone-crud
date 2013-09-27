@@ -3,8 +3,7 @@
     'underscore',
     'backbone',
     'views/ConfirmView',
-    'text!templates/account/item.html',
-    'text!templates/undochanges.html'
+    'text!templates/account/item.html'
 ], function ($, _, Backbone, ConfirmView, template, templateUndoChanges) {
 
     var ItemView = Backbone.View.extend({
@@ -12,7 +11,7 @@
         tagName: "tr",
         
         initialize: function() {
-            this.model.on('destroy', this.remove, this);
+            this.model.bind('destroy', this.close, this);
             this.model.bind('undoableAction', this.showUndo, this);
         },
 
@@ -43,8 +42,12 @@
         },
         
         showUndo: function () {
-            var $container = $('article > .container');
-            $container.prepend(templateUndoChanges);
+            $('header > .container > .undo-changes').show();
+        },
+        
+        onClose: function() {
+            this.model.unbind('destroy', this.close);
+            this.model.unbind('undoableAction', this.showUndo);
         }
         
     });

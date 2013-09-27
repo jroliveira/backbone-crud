@@ -9,8 +9,12 @@
     position: relative;
 }
 
+header > .container {
+    padding-top: 50px;
+}
+
 article {
-    padding-top: 60px;
+    padding-top: 10px;
     padding-bottom: 80px;
 }
 
@@ -162,4 +166,5 @@ code {
     margin: auto;
     width: 300px;
     color: #000;
+    display: none;
 }

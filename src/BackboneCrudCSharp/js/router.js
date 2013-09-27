@@ -38,7 +38,9 @@ define([
         appRouter.on('route:createAccount', function () {
             var model = new Account;
             var view = new AccountSaveView({ model: model });
-            view.render();
+            var content = view.render();
+            
+            $('article > .container').html(content.el);
         });
         
         appRouter.on('route:listAccount', function () {

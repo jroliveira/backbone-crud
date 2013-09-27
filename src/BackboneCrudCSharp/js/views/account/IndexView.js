@@ -10,19 +10,20 @@
 
     var IndexView = Backbone.View.extend({
         
-        el: $('article > .container'),
-
-        initialize: function () {
-            this.collection.on("change reset add remove", this.renderItems, this);
-        },
+        el: $('#wrap'),
 
         events: {
             'click #create': 'goCreate',
-            'click #undo': 'undoAction'
+            'click #undo': 'undoAction',
+            'click #accounts': 'goAccounts'
+        },
+
+        initialize: function () {
+            this.collection.bind("change reset add remove", this.renderItems, this);
         },
 
         render: function() {
-            $(this.el).html(template);
+            $(this.el).find('article > .container').html(template);
             this.renderItems();
 
             return this;
@@ -52,12 +53,21 @@
             Backbone.history.navigate('conta/criar', { trigger: true });
         },
         
+        goAccounts: function (e) {
+            e.preventDefault();
+            Backbone.history.navigate('contas', { trigger: true });
+        },
+        
         undoAction: function (e) {
             e.preventDefault();
             
             var action = this.collection.lastAction;
             action.undo();
-            $('.undo-changes').remove();
+            $('header > .container > .undo-changes').hide();
+        },
+        
+        onClose: function() {
+            this.collection.unbind("change reset add remove", this.renderItems);
         }
 
     });
