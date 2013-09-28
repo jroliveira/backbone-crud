@@ -152,6 +152,7 @@
     <Content Include="js\templates\account\item.html" />
     <Content Include="js\templates\alert.html" />
     <Content Include="js\templates\confirm.html" />
+    <Content Include="js\templates\header.html" />
     <Content Include="js\templates\undochanges.html" />
     <Content Include="js\templates\empty.html" />
     <Content Include="js\templates\home\index.html" />
@@ -161,6 +162,7 @@
     <Content Include="js\views\account\ItemView.js" />
     <Content Include="js\views\AlertView.js" />
     <Content Include="js\views\ConfirmView.js" />
+    <Content Include="js\views\HeaderView.js" />
     <Content Include="js\views\home\IndexView.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

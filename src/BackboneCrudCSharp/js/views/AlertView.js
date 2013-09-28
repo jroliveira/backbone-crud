@@ -7,7 +7,7 @@
 
     var AlertView = Backbone.View.extend({
 
-        el: $('article > .container'),
+        el: $('article'),
 
         initialize: function () {
             this.type = this.options.type;

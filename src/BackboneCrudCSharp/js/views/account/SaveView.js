@@ -9,6 +9,8 @@
 
     var SaveView = Backbone.View.extend({
 
+        className: 'container',
+
         initialize: function () {
             this.model.on("invalid", this.showErrors, this);
             this.model.on("change", this.hideErrors, this);

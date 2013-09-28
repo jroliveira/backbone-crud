@@ -9,7 +9,7 @@
     position: relative;
 }
 
-header > .container {
+header {
     padding-top: 50px;
 }
 
@@ -163,8 +163,40 @@ code {
 /* undochanges.html */
 
 .undo-changes {
-    margin: auto;
     width: 300px;
     color: #000;
     display: none;
+    margin-top: 30px;
+
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
 }
+
+/* alert.html */
+
+.alert:not(.undo-changes) {
+    margin: 0 auto 10px auto;
+    width: 1120px;
+}
+
+/*.alert:before, .container:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.alert:after {
+    clear: both;
+}
+.alert:before, .container:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.alert {
+    width: 1170px;
+}
+.alert {
+    margin-left: auto;
+    margin-right: auto;
+}*/

@@ -7,8 +7,8 @@
 
     var IndexView = Backbone.View.extend({
 
-        el: $('article > .container'),
-
+        className: 'container',
+        
         render: function () {
             this.$el.html(template);
             
