@@ -58,6 +58,16 @@ namespace BackboneCrudCSharp.Controllers {
 
         public HttpResponseMessage Post(AccountModel model) {
             try {
+                if (model.id > 0) {
+                    var account = Accounts.FirstOrDefault(c => c.Id == model.id);
+                    Accounts.Remove(account);
+
+                    account.Deleted = false;
+                    Accounts.Add(account);
+
+                    return Request.CreateResponse(HttpStatusCode.Created, account);
+                }
+                
                 var id = Accounts.Max(c => c.Id) + 1;
                 model.id = id;
 
@@ -70,6 +80,24 @@ namespace BackboneCrudCSharp.Controllers {
                 });
 
                 return Request.CreateResponse(HttpStatusCode.Created, model);
+            }
+            catch {
+                throw new HttpResponseException(new HttpResponseMessage {
+                    StatusCode = HttpStatusCode.ExpectationFailed,
+                    Content = new StringContent("Erro ao inserir!")
+                });
+            }
+        }
+
+        public HttpResponseMessage Recover(int id) {
+            try {
+                var account = Accounts.FirstOrDefault(c => c.Id == id);
+                Accounts.Remove(account);
+
+                account.Deleted = false;
+                Accounts.Add(account);
+
+                return Request.CreateResponse(HttpStatusCode.Created, account);
             }
             catch {
                 throw new HttpResponseException(new HttpResponseMessage {

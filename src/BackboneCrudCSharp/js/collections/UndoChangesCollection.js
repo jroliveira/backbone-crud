@@ -15,8 +15,21 @@
             if (event.type === 'destroy') {
                 this.lastAction.collection = this;
                 this.lastAction.undo = function () {
-                    this.collection.create(this.model.attributes, { wait: true });
-                    this.collection.lastAction = null;
+                    var self = this;
+
+                    $.ajax({
+                        type: "POST",
+                        url: this.collection.url,
+                        data: "id=" + this.model.id,
+                        dataType: "json",
+                        success: function () {
+                            self.collection.add(self.model);
+                            self.collection.lastAction = null;
+                        }
+                    });
+                    
+                    //this.model.save(this.model.attributes, { wait: true, validate: true });
+                    //this.collection.create(this.model);
                 };
             }
         }

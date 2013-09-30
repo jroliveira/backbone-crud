@@ -34,17 +34,17 @@
                 errors.push({ name: 'email', message: 'Campo obrigatório.' });
             }
             
-            //if (!attrs.password) {
-            //    errors.push({ name: 'password', message: 'Campo obrigatório.' });
-            //}
+            if (!attrs.password) {
+                errors.push({ name: 'password', message: 'Campo obrigatório.' });
+            }
             
-            //if (attrs.password !== attrs.confirmPassword) {
-            //    errors.push({ name: 'confirmPassword', message: 'Senha năo confere.' });
-            //}
+            if (attrs.password !== attrs.confirmPassword) {
+                errors.push({ name: 'confirmPassword', message: 'Senha năo confere.' });
+            }
 
-            //if (!attrs.confirmPassword) {
-            //    errors.push({ name: 'confirmPassword', message: 'Campo obrigatório.' });
-            //}
+            if (!attrs.confirmPassword) {
+                errors.push({ name: 'confirmPassword', message: 'Campo obrigatório.' });
+            }
             
             return errors.length > 0 ? errors : false;
         }
