@@ -18,6 +18,12 @@
         },
 
         initialize: function () {
+            console.log('indexview initialize');
+            this.collection.bind("fetch:started", function () {
+                console.log('loading template');
+                $(this.el).html(templateLoading);
+            }, this);
+
             this.collection.bind("change reset add remove", this.renderItems, this);
             this.collection.bind("undoableAction", this.showUndo, this);
         },

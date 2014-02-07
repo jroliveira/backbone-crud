@@ -23,6 +23,7 @@ namespace BackboneCrudCSharp.Controllers {
         };
 
         public IEnumerable<dynamic> Get() {
+            System.Threading.Thread.Sleep(3000);
             return Accounts.Where(account => account.Deleted == false)
                            .Select(account => new { id = account.Id, name = account.Name, email = account.Email });
         }
