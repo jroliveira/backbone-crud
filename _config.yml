@@ -1,0 +1,14 @@
+# Dependencies
+markdown: redcarpet
+
+pygments: false
+
+# Permalinks
+permalink: pretty
+
+# Setup
+title: backbone crud
+url: jroliveira.net
+
+author:
+  name: Júnior Oliveira

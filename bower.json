@@ -1,0 +1,12 @@
+{
+  "name": "backbone crud",
+  "version": "0.0.1",
+  "dependencies": {
+    "underscore": "1.5.1",
+    "backbone": "1.0.0",
+    "bootstrap": "2.3.2",
+    "requirejs": "2.1.8",
+    "requirejs-text": "2.0.0"
+  },
+  "devDependencies": {}
+}
