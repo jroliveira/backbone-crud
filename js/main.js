@@ -1,11 +1,11 @@
 require.config({
     paths: {
-        jquery: 'libs/jquery/jquery',
-        underscore: 'libs/underscore/underscore',
-        backbone: 'libs/backbone/backbone',
+        jquery: '../vendor/js/jquery',
+        underscore: '../vendor/js/underscore',
+        backbone: '../vendor/js/backbone',
         order: 'libs/requirejs-order/order',
-        text: 'libs/requirejs-text/text',
-        'bootstrap': 'libs/bootstrap/docs/assets/js/bootstrap'
+        text: '../vendor/js/text',
+        'bootstrap': '../vendor/js/bootstrap'
     },
 
     shim: {

@@ -1,2 +1,2 @@
-backbone-crud-csharp
+backbone-crud
 ====================

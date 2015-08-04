@@ -1,5 +1,38 @@
----
-layout: page
----
+<!DOCTYPE html>
+<html>
 
-{{ content }}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>backbone-crud</title>
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-responsive.css" />
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-mvc-validation.css" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-extensions.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="wrap">
+    <header>
+    </header>
+      
+    <article>
+      {{ content }}
+    </article>
+      
+    <footer>
+      <div class="container">
+        <p class="pull-left">&copy; <a href="//jroliveira.net" rel="author">J&uacute;nior Oliveira</a> 2015.</p>
+        <p class="pull-right"> backbone crud</p>
+      </div>
+    </footer>
+  </div>
+    
+  <script data-main="js/main" src="vendor/js/require.js"></script>
+</body>
+
+</html>

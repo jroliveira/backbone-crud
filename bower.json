@@ -1,6 +1,13 @@
 {
-  "name": "backbone crud",
+  "name": "backbone-crud",
   "version": "0.0.1",
+  "homepage": "https://github.com/jroliveira/backbone-crud",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
   "dependencies": {
     "underscore": "1.5.1",
     "backbone": "1.0.0",
