@@ -7,7 +7,7 @@ define([
 
     var Account = UndoChangesModel.extend({
 
-        urlRoot: 'http://backbone-crud-csharp.apphb.com/api/accounts',
+        urlRoot: 'http://nancy-api.apphb.com/accounts',
         
         idAttribute: 'id',
         

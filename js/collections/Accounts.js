@@ -10,7 +10,7 @@ define([
         
         model: Account,
         
-        url: 'http://backbone-crud-csharp.apphb.com/api/accounts',
+        url: 'http://nancy-api.apphb.com/accounts',
         
         comparator: function(model){
             return model.get('name');
