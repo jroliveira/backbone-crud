@@ -1,50 +1,62 @@
-﻿define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'views/ConfirmView',
-    'text!templates/account/item.html'
-], function ($, _, Backbone, ConfirmView, template, templateUndoChanges) {
+define([
+  'jquery',
+  'underscore',
+  'backbone',
+  'views/ConfirmView',
+  'text!templates/account/item.html'
+], function (
+  $,
+  _,
+  Backbone,
+  ConfirmView,
+  template,
+  templateUndoChanges
+) {
 
-    var ItemView = Backbone.View.extend({
+  var ItemView = Backbone.View.extend({
 
-        tagName: "tr",
-        
-        initialize: function() {
-            this.model.bind('destroy', this.close, this);
-        },
+    tagName: "tr",
 
-        events: {
-            'click #destroy': 'destroy',
-            'click #goEdit': 'goEdit'
-        },
+    initialize: function () {
+      this.model.bind('destroy', this.close, this);
+    },
 
-        render: function () {
-            var data = this.model.toJSON();
+    events: {
+      'click #destroy': 'destroy',
+      'click #goEdit': 'goEdit'
+    },
 
-            var compilatedTemplate = _.template(template, data);
-            $(this.el).append(compilatedTemplate);
+    render: function () {
+      var data = this.model.toJSON();
 
-            return this;
-        },
-        
-        destroy: function (e) {
-            e.preventDefault();
+      var compilatedTemplate = _.template(template, data);
+      $(this.el).append(compilatedTemplate);
 
-            var view = new ConfirmView({ model: this.model, el: this.el });
-            view.render();
-        },
-        
-        goEdit: function (e) {
-            e.preventDefault();
-            Backbone.history.navigate('conta/editar/' + this.model.get('id'), { trigger: true });
-        },
-        
-        onClose: function() {
-            this.model.unbind('destroy', this.close);
-        }
-        
-    });
+      return this;
+    },
 
-    return ItemView;
+    destroy: function (e) {
+      e.preventDefault();
+
+      var view = new ConfirmView({
+        model: this.model,
+        el: this.el
+      });
+      view.render();
+    },
+
+    goEdit: function (e) {
+      e.preventDefault();
+      Backbone.history.navigate('conta/editar/' + this.model.get('id'), {
+        trigger: true
+      });
+    },
+
+    onClose: function () {
+      this.model.unbind('destroy', this.close);
+    }
+
+  });
+
+  return ItemView;
 });

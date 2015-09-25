@@ -1,37 +1,38 @@
 define([
-    'router',
-    'underscore',
-    'backbone',
+  'router',
+  'underscore',
+  'backbone',
 
-    'text!templates/loading.html'
+  'text!templates/loading.html'
 ], function (
-    Router,
-    _,
-    Backbone,
+  Router,
+  _,
+  Backbone,
 
-    templateLoading
+  templateLoading
 ) {
 
-    Backbone.View.prototype.close = function() {
-        this.remove();
-        this.unbind();
-        if (this.onClose) {
-            this.onClose();
-        }
-    };
+  Backbone.View.prototype.close = function () {
+    this.remove();
+    this.unbind();
+    if (this.onClose) {
+      this.onClose();
+    }
+  };
 
-    var collectionFetch = Backbone.Collection.prototype.fetch;
-    Backbone.Collection.prototype.fetch = function(options) {
-        this.trigger('fetch:started');
-        $('article').html(templateLoading);
-        collectionFetch.call(this, options);
-    };
+  var collectionFetch = Backbone.Collection.prototype.fetch;
+  Backbone.Collection.prototype.fetch = function (options) {
+    this.trigger('fetch:started');
+    $('article').html(templateLoading);
+    collectionFetch.call(this, options);
+  };
 
-    var initialize = function () {
-        Router.initialize();
-    };
-    
-    return {
-        initialize: initialize
-    };
+  var initialize = function () {
+    Router.initialize();
+  };
+
+  return {
+    initialize: initialize
+  };
+  
 });

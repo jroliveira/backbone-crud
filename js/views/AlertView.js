@@ -1,29 +1,37 @@
-﻿define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'text!templates/alert.html'
-], function ($, _, Backbone, template) {
+define([
+  'jquery',
+  'underscore',
+  'backbone',
+  'text!templates/alert.html'
+], function (
+  $,
+  _,
+  Backbone,
+  template
+) {
 
-    var AlertView = Backbone.View.extend({
+  var AlertView = Backbone.View.extend({
 
-        el: $('article'),
+    el: $('article'),
 
-        initialize: function () {
-            this.type = this.options.type;
-            this.message = this.options.message;
+    initialize: function () {
+      this.type = this.options.type;
+      this.message = this.options.message;
 
-            this.$el.find('div.alert:not(.undo-changes)').remove();
-        },
+      this.$el.find('div.alert:not(.undo-changes)').remove();
+    },
 
-        render: function () {
-            var data = { type: this.type, message: this.message };
-            var compilatedTemplate = _.template(template, data);
-            $(this.el).prepend(compilatedTemplate);
+    render: function () {
+      var data = {
+        type: this.type,
+        message: this.message
+      };
+      var compilatedTemplate = _.template(template, data);
+      $(this.el).prepend(compilatedTemplate);
 
-            return this;
-        }
-    });
+      return this;
+    }
+  });
 
-    return AlertView;
+  return AlertView;
 });

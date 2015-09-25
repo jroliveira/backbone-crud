@@ -1,21 +1,26 @@
-﻿define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'text!templates/home/index.html'
-], function ($, _, Backbone, template) {
+define([
+  'jquery',
+  'underscore',
+  'backbone',
+  'text!templates/home/index.html'
+], function (
+  $,
+  _,
+  Backbone,
+  template
+) {
 
-    var IndexView = Backbone.View.extend({
+  var IndexView = Backbone.View.extend({
 
-        className: 'container',
-        
-        render: function () {
-            this.$el.html(template);
-            
-            return this;
-        }
+    className: 'container',
 
-    });
+    render: function () {
+      this.$el.html(template);
 
-    return IndexView;
+      return this;
+    }
+
+  });
+
+  return IndexView;
 });
